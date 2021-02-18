@@ -120,14 +120,31 @@ ra() {
     fi
 }
 
+
+function ranger {
+    local IFS=$'\t\n'
+    local tempfile="$(mktemp -t tmp.XXXXXX)"
+    local ranger_cmd=(
+        command
+        ranger
+        --cmd="map q chain shell echo %d > "$tempfile"; quitall"
+    )
+    
+    ${ranger_cmd[@]} "$@"
+    if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
+        cd -- "$(cat "$tempfile")" || return
+    fi
+    command rm -f -- "$tempfile" 2>/dev/null
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_COMPLETION_TRIGGER='\'
 # export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g "" '
 export FZF_DEFAULT_OPTS='--preview "bat --style=numbers --color=always --line-range :500 {}"'
 
 
-export GOPATH=$HOME/Go  # 你存放go项目的路径，之后出现不做解释
-export GO111MODULE=on   #模块支持
+# export GOPATH=$HOME/Go  # 你存放go项目的路径，之后出现不做解释
+# export GO111MODULE=on   #模块支持
 export GOPROXY=https://goproxy.cn,direct    #代理加速
 
 eval $(thefuck --alias)
