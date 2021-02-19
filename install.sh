@@ -1,8 +1,8 @@
 #!/bin/bash
 
-rm -rf ~/.config/alacritty/
-mkdir ~/.config/alacritty
-ln ./alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+# rm -rf ~/.config/alacritty/
+# mkdir ~/.config/alacritty
+# ln ./alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 
 
 
