@@ -105,10 +105,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias rm="echo error!"
+# alias rm="echo error!"
 alias tp="trash-put"
 alias ex="extract"
 alias gb="go build -ldflags '-s -w  -linkmode "external" -extldflags "-static"'"
+alias code="/usr/share/code/bin/code"
 
 ra() {
     if [ -z "$RANGER_LEVEL" ]
@@ -143,7 +144,7 @@ export FZF_DEFAULT_OPTS='--preview "bat --style=numbers --color=always --line-ra
 
 
 # export GOPATH=$HOME/Go  # 你存放go项目的路径，之后出现不做解释
-export GO111MODULE=auto   #强制打开 go modules
+export GO111MODULE=on   #强制打开 go modules
 export GOPROXY=https://goproxy.cn,direct    #代理加速
 
 eval $(thefuck --alias)
